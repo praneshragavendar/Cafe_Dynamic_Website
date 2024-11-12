@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>Welcome to Mom &amp; Pop Caf&eacute;!</title>
+	<title>!!!!!!!!!!Welcome to Keerthana &amp; simple life&eacute;!</title>
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 
