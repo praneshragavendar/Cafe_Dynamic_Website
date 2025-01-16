@@ -16,49 +16,6 @@ spec:
         app: cafeapp
         tier: frontend
     spec:
-      securityContext:
-        runAsNonRoot: true  # Ensure the pod runs as non-root
-      volumes:
-      - name: app-config-volume
-        configMap:
-          name: app-config
-      containers:
-      - image: sreedocker123/mompopcafeapp:v1
-        name: cafeweb
-        securityContext:
-          allowPrivilegeEscalation: false  # Disable privilege escalation
-          capabilities:
-            drop:
-              - ALL  # Drop all unnecessary capabilities
-          runAsNonRoot: true  # Ensure the container runs as non-root
-          seccompProfile:
-            type: RuntimeDefault  # Use the default seccomp profile
-        volumeMounts:
-        - name: app-config-volume
-          mountPath: /var/www/html/getAppParameters.php  # Mount the file into the correct path
-          subPath: getAppParameters.php  # Specify the ConfigMap key (filename)
-          readOnly: false  # Ensure the file is writable
-        ports:
-        - containerPort: 80
-          name: cafeweb
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: cafeweb
-  labels:
-    app: cafeapp
-spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      app: cafeapp
-      tier: frontend
-  template:
-    metadata:
-      labels:
-        app: cafeapp
-        tier: frontend
-    spec:
       volumes:
       - name: app-config-volume
         configMap:
@@ -70,7 +27,6 @@ spec:
         - name: app-config-volume
           mountPath: /var/www/html/getAppParameters.php  # Mount the file into the correct path
           subPath: getAppParameters.php  # Specify the ConfigMap key (filename)
-          readOnly: false  # Ensure the file is writable
         ports:
         - containerPort: 80
           name: cafeweb
