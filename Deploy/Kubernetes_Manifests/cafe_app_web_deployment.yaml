@@ -27,7 +27,7 @@ spec:
         - name: app-config-volume
           mountPath: /var/www/html/getAppParameters.php  # Mount the file into the correct path
           subPath: getAppParameters.php  # Specify the ConfigMap key (filename)
+          readOnly: false  # Ensure the file is writable
         ports:
         - containerPort: 80
           name: cafeweb
-
