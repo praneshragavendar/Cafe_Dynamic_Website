@@ -11,7 +11,7 @@ if [ ! -d "$DEST_DIR" ]; then
     
     # Copy files only if the destination directory was created
     if [ $? -eq 0 ]; then
-        sudo cp -rf ./mompopcafe/* "$DEST_DIR/"
+        sudo cp -rf ../../mompopcafe/* "$DEST_DIR/"
         echo "Files copied to $DEST_DIR."
     else
         echo "Failed to create directory $DEST_DIR."
@@ -32,7 +32,7 @@ DB_HOST="localhost"
 DB_NAME="mom_pop_db"
 
 # SQL script
-SQL_SCRIPT="./mompopdb/create-db.sql"
+SQL_SCRIPT="../../mompopdb/create-db.sql"
 
 # Execute SQL script using MySQL client
 #mysql -h$DB_HOST -u$DB_USER -p$DB_PASSWORD -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;"
